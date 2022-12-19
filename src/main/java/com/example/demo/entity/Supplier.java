@@ -25,7 +25,7 @@ public class Supplier {
     @Column(name = "supplier_adress")
     private String supplier_address;
 
-    @OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "supplier",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
 
     private Set<Product> listProduct = new HashSet<>();

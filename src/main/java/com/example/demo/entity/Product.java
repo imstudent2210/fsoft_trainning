@@ -22,10 +22,12 @@ public class Product {
     private String product_name;
     @Column(name = "product_price")
     private int product_price;
+// bổ sung để fix lỗi k thêm đc sản phẩm với suppplier_id
+//    private int supplier_id;
 
     // mối quan hệ 1 - n với nhà cung cấp
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", nullable = true, referencedColumnName = "supplier_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "supplier_id", nullable = false, referencedColumnName = "supplier_id")
     @JsonBackReference
 
     private Supplier supplier;
@@ -33,11 +35,22 @@ public class Product {
     public Product(String product_name, int product_price, int suppler_id) {
         this.product_name = product_name;
         this.product_price = product_price;
+//        this.supplier_id = suppler_id; // bổ sung để fix lỗi k thêm đc sản phẩm với suppplier_id
     }
 
-//    public Product(String product_name, int product_price, Supplier supplier) {
-//        this.product_name = product_name;
-//        this.product_price = product_price;
-//        this.supplier = supplier;
-//    }
+    public Product(String product_name, int product_price, Supplier supplier) {
+        this.product_name = product_name;
+        this.product_price = product_price;
+        this.supplier = supplier;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_id=" + product_id +
+                ", product_name='" + product_name + '\'' +
+                ", product_price=" + product_price +
+                ", supplier=" + supplier +
+                '}';
+    }
 }
