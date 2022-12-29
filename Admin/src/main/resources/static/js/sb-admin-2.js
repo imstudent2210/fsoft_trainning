@@ -44,6 +44,59 @@
     }
   });
 
+
+  //
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+  });
+  //
+  Validator.isRequired = function (selector, message) {
+    return {
+      selector: selector,
+      test: function (value) {
+        return value ? undefined :  message || 'Please enter this field'
+      }
+    };
+  }
+
+
+
+  Validator.isEmail = function (selector, message) {
+    return {
+      selector: selector,
+      test: function (value) {
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regex.test(value) ? undefined :  message || 'This field must be an email';
+      }
+    };
+  }
+
+  Validator.minLength = function (selector, min, message) {
+    return {
+      selector: selector,
+      test: function (value) {
+        return value.length >= min ? undefined :  message || `Please enter a minimum of ${min} characters`;
+      }
+    };
+  }
+
+  Validator.isConfirmed = function (selector, getConfirmValue, message) {
+    return {
+      selector: selector,
+      test: function (value) {
+        return value === getConfirmValue() ? undefined : message || 'Incorrect input value';
+      }
+    }
+  }
+
+
   // Smooth scrolling using jQuery easing
   $(document).on('click', 'a.scroll-to-top', function(e) {
     var $anchor = $(this);
@@ -54,3 +107,52 @@
   });
 
 })(jQuery); // End of use strict
+
+$('.vendor-carousel').owlCarousel({
+  loop: true,
+  margin: 29,
+  nav: false,
+  autoplay: true,
+  smartSpeed: 1000,
+  responsive: {
+    0:{
+      items:2
+    },
+    576:{
+      items:3
+    },
+    768:{
+      items:4
+    },
+    992:{
+      items:5
+    },
+    1200:{
+      items:6
+    }
+  }
+});
+
+
+// Related carousel
+$('.related-carousel').owlCarousel({
+  loop: true,
+  margin: 29,
+  nav: false,
+  autoplay: true,
+  smartSpeed: 1000,
+  responsive: {
+    0:{
+      items:1
+    },
+    576:{
+      items:2
+    },
+    768:{
+      items:3
+    },
+    992:{
+      items:4
+    }
+  }
+});

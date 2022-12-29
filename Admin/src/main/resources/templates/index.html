@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:layout="">
+
+<head th:replace="fragments::header">
+
+</head>
+
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul th:replace = "fragments :: sidebar">
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace = "fragments :: topbar">
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="container-fluid mb-3">
+                    <div class="row px-xl-5">
+                        <div class="col-lg-12">
+                            <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#header-carousel" data-slide-to="1"></li>
+                                    <li data-target="#header-carousel" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item position-relative" style="height: 530px;">
+                                        <img class="position-absolute w-100 h-100" th:src="@{/img/image-banner/banner4.png}"style="object-fit: cover;">
+                                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item position-relative active" style="height: 530px;">
+                                        <img class="position-absolute w-100 h-100" th:src="@{/img/image-banner/banner2.png}" alt=""style="object-fit: cover;">
+                                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item position-relative" style="height: 530px;">
+                                        <img class="position-absolute w-100 h-100" th:src="@{/img/image-banner/banner3.png}"style="object-fit: cover;">
+                                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Carousel End -->
+
+
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer th:replace = "fragments :: footer">
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a th:replace = "fragments :: scroll">
+</a>
+
+<!--&lt;!&ndash; Logout Modal-->
+<div th:replace = "fragments :: logoutModal"></div>
+
+<div th:replace = "fragments::script"></div>
+<!-- Page level plugins -->
+<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+<script th:src="@{/vendor/owlcarousel/owl.carousel.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{/js/demo/chart-area-demo.js}"></script>
+<script th:src="@{/js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>

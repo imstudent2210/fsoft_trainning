@@ -22,7 +22,7 @@ public class Admin {
     private String userName;
     private String passWord;
     @Lob
-    @Column(columnDefinition = "MEDIUMLOB")
+    @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "admin_role", joinColumns = @JoinColumn(name = "admin_id", referencedColumnName = "admin_id"),

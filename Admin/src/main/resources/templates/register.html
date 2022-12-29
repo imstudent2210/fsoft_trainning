@@ -1,25 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html" xmlns:layout="">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Register Page</title>
-
-    <!-- Custom fonts for this template-->
-    <link th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link th:href="@{css/sb-admin-2.min.css}" rel="stylesheet">
-
+<head th:replace="fragments :: header">
 </head>
 
 <body class="bg-gradient-primary">
@@ -36,34 +18,59 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <div th:if="${emailError}">
+                                <p class="alert alert-warning" th:text="${emailError}"></p>
+                            </div>
+                            <div th:if="${registerError}">
+                                <p class="alert alert-danger" th:text="${registerError}"></p>
+                            </div>
+                            <div th:if="${passwordError}">
+                                <p class="alert alert-primary" th:text="${passwordError}"></p>
+                            </div>
+                            <div th:if="${registerSuccess}">
+                                <p class="alert alert-success" th:text="${registerSuccess}"></p>
+                            </div>
+                            <form th:action ="@{/register-new}" th:object="${adminDTO}" method="POST" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" class="form-control form-control-user" th:field = "*{firstName}" id="exampleFirstName"
                                             placeholder="First Name">
+                                        <div class="alert alert-warning pt-2" th:if="${#fields.hasErrors('firstName')}"
+                                             th:errors= "*{firstName}">
+                                        </div>
                                     </div>
+
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" th:field = "*{lastName}" id="exampleLastName"
                                             placeholder="Last Name">
+                                        <div class="alert alert-warning pt-2" th:if="${#fields.hasErrors('lastName')}"
+                                             th:errors= "*{lastName}">
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="email" class="form-control form-control-user" th:field = "*{userName}" id="exampleInputEmail"
+                                           placeholder="ex: email@domain.com">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user" th:field = "*{passWord}"
                                             id="exampleInputPassword" placeholder="Password">
+                                        <div class="alert alert-warning pt-2" th:if="${#fields.hasErrors('passWord')}"
+                                             th:errors= "*{passWord}">
+                                        </div>
                                     </div>
+
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user" th:field = "*{repeatPassWord}"
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a th:href="@{login.html}" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+<!--                                <a th:href="@{login.html}" class="btn btn-primary btn-user btn-block">-->
+<!--                                    Register Account-->
+<!--                                </a>-->
+                                <button type ="submit" class="btn btn-primary btn-user btn-block"> Register Account </button>
                                 <hr>
 <!--                                <a th:href="@{index.html}" class="btn btn-google btn-user btn-block">-->
 <!--                                    <i class="fab fa-google fa-fw"></i> Register with Google-->
@@ -87,15 +94,7 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script th:src="@{vendor/jquery-easing/jquery.easing.min.js}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script th:src="@{js/sb-admin-2.min.js}"></script>
+    <div th:replace="fragments::script"></div>
 
 </body>
 
