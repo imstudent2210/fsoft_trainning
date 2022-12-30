@@ -25,7 +25,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         manufacturerSave.getEmail();
         manufacturerSave.setActivated(true);
         manufacturerSave.setDeleted(false);
-        return manufactureRepository.save(manufacturerSave);
+        return manufactureRepository.save(manufacturer);
     }
 
     @Override

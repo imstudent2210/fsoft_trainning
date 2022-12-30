@@ -97,6 +97,7 @@
     </div>
   </li>
 
+<!--  <div id="clock" class="mr-2 d-none d-lg-inline text-gray-600 small"></div>-->
 
 
 
@@ -165,6 +166,13 @@
         </form>
       </div>
     </li>
+    <li class="nav-item dropdown no-arrow">
+<!--      <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="clock"></span>-->
+      <a class="nav-link dropdown-toggle" href="#" role="button"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="clock"></span>
+      </a>
+    </li>
 
     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -172,6 +180,7 @@
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<!--        <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="clock"></span>-->
         <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${username}"></span>
         <img class="img-profile rounded-circle"
              th:src="@{img/undraw_profile.svg}">
