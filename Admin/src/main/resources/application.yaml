@@ -1,0 +1,19 @@
+#spring:
+#  mail:
+#    default-encoding: UTF-8
+#    host: smtp.gmail.com
+#    port: 578
+#    username: imstudent2210@gmail.com
+#    password: mcpauyptjfcsjgcq
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#          debug: true
+#    test-connection: false
+#    protocol: smtp
+#
+#
+#

@@ -158,7 +158,7 @@ public class ProductController {
     @GetMapping("/search/{pageNo}")
     public String searchProducts(@PathVariable("pageNo")int pageNo,
                                  @RequestParam("keyword") String keyword,
-                                 Model model,
+                                    Model model,
                                  Principal principal){
         if(principal == null){
             return "redirect:/login";
